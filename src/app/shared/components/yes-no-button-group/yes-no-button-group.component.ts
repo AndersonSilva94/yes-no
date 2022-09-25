@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-yes-no-button-group',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./yes-no-button-group.component.scss']
 })
 export class YesNoButtonGroupComponent implements OnInit {
+
+  @Input() public value: string = null;
+  @Input() public label!: string;
 
   constructor() { }
 
