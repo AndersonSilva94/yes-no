@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AppComponent implements OnInit {
   title = 'a11y-p1';
   public yesNoAnswer: string = 'no';
-  public form!: FormGroup;
+  public form: FormGroup = null;
 
   constructor(
     private fb: FormBuilder
