@@ -1,6 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import * as uuid from 'uuid';
+import { UniqueIdService } from '../../services/unique-id/unique-id.service';
 
 @Component({
   selector: 'app-yes-no-button-group',
@@ -24,9 +24,9 @@ export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
   public onChange = (value: string) => {};
   public onTouched = () => {};
 
-  constructor() {
-    this.id = `yes-no-button-group-${uuid.v1()}`;
-  }
+  constructor(
+    private uniqueIdService: UniqueIdService
+  ) {}
 
   public writeValue(value: string): void { //muda o valor da view
     this.value = value
@@ -44,6 +44,7 @@ export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit(): void {
+    this.id = this.uniqueIdService.generateUniqueIdWithPrefix('yes-no-button-group')
   }
 
   public activate(value: string): void {
