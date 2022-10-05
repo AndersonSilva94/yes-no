@@ -17,11 +17,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      yesNoAnswer: [null]
+      yesNoAnswer: [{
+        value: null,
+        disabled: false
+      }]
     })
   }
 
   public submit(): void {
+    this.form.get('yesNoAnswer').disable();
     console.log(this.form.value);
   }
 }
